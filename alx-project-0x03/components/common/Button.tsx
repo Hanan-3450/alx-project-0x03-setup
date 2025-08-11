@@ -1,29 +1,29 @@
+import React from "react";
+
 interface ButtonProps {
+  action: () => void;
   buttonLabel: string;
-  buttonSize?: string;
-  buttonBackgroundColor?: "red" | "blue" | "orange" | "green";
-  action?: () => void;
+  buttonBackgroundColor: string;
 }
 
-const Button = ({
-  buttonLabel,
-  buttonSize,
-  buttonBackgroundColor,
+const Button: React.FC<ButtonProps> = ({
   action,
-}: ButtonProps) => {
-  const backgroundColorClass = buttonBackgroundColor
-    ? {
-        red: "bg-red-500",
-        blue: "bg-blue-500",
-        orange: "bg-orange-500",
-        green: "bg-green-500",
-      }[buttonBackgroundColor]
-    : "bg-slate-500";
+  buttonLabel,
+  buttonBackgroundColor,
+}) => {
+  // Map color names to Tailwind bg classes (add more if needed)
+  const bgColorClass =
+    {
+      blue: "bg-blue-500 hover:bg-blue-600",
+      green: "bg-green-500 hover:bg-green-600",
+      orange: "bg-orange-500 hover:bg-orange-600",
+    }[buttonBackgroundColor] || "bg-gray-500";
 
   return (
     <button
       onClick={action}
-      className={`${backgroundColorClass} ${buttonSize} px-6 py-2 text-sm font-semibold rounded-lg hover:${backgroundColorClass}/50 transition duration-300 text-white`}
+      className={`${bgColorClass} text-white font-semibold py-2 px-4 rounded transition-colors duration-200`}
+      type="button"
     >
       {buttonLabel}
     </button>
