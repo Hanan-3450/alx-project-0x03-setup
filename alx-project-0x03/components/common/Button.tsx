@@ -1,10 +1,6 @@
 import React from "react";
+import { ButtonProps } from "@/interface";
 
-interface ButtonProps {
-  action: () => void;
-  buttonLabel: string;
-  buttonBackgroundColor: string;
-}
 
 const Button: React.FC<ButtonProps> = ({
   action,
